@@ -1,0 +1,31 @@
+package LVLupServer;
+
+import java.io.Serializable;
+import java.sql.SQLException;
+
+/**
+ * A LVLupServer.message that will be sent OR received on Object streams to and
+ * from clients. Because if we want to use Object streams,we need to implement
+ * the Serializable interface.
+ *
+ * The apply method is provided as a way for messages from a client to
+ * be processed (applied to some context). The type of the context is
+ * a generic
+ *
+ * Note: the exact definition of the classes in the Java server and the
+ * Android client will differ slightly (in terms of methods, not fields).
+ * In order for the slightly different classes to match when reading/writing
+ * each class will have a <code>private static final long serialVersionUID</code>
+ * that will be used to perform the matching.
+ * @param <C> The type of the context.
+ */
+public abstract class Message<C> implements Serializable {
+    private static final long serialVersionUID = 999L;
+
+    /**
+     * Apply this LVLupServer.message's logic to a specific context. This will only
+     * be used for messages received from a client.
+     * @param context The context to apply the LVLupServer.message logic too.
+     */
+    public void apply(C context) throws SQLException {}
+}

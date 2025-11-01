@@ -1,0 +1,25 @@
+package LVLupServer.message.client.appearance;
+
+import LVLupServer.LevelUpClient;
+import LVLupServer.Message;
+import LVLupServer.dataBase.UserRepository;
+
+import java.io.Serial;
+import java.sql.SQLException;
+
+public class UpdateBackground extends Message<LevelUpClient> {
+    @Serial
+    private static final long serialVersionUID = 24L;
+
+    private int itemID;
+
+    public UpdateBackground(int itemID) {
+        this.itemID = itemID;
+    }
+
+    @Override
+    public void apply(LevelUpClient client) throws SQLException {
+        UserRepository userRepository = new UserRepository();
+        userRepository.updateUserBackground(itemID,client.userDetails.getUserID());
+    }
+}
