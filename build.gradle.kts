@@ -16,6 +16,7 @@ dependencies {
     implementation ("com.mysql:mysql-connector-j:8.2.0")
     implementation ("org.springframework.security:spring-security-crypto:6.4.4")
     implementation("ch.qos.logback:logback-classic:1.4.11")
+    implementation("org.java-websocket:Java-WebSocket:1.5.3")
 }
 
 tasks.test {
